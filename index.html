@@ -2,12 +2,93 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Crypto Trading Dashboard - Live Opportunities</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GDPe — Daily GDP Treemap Puzzle</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.cdnfonts.com/css/geist" rel="stylesheet" />
+    <link href="https://fonts.cdnfonts.com/css/geist-mono" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <main class="page" id="app">
+      <header class="header">
+        <div class="header__branding">
+          <h1 class="brand">GDPe</h1>
+          <p class="tagline">Guess the country behind today's GDP treemap.</p>
+        </div>
+        <div class="header__meta" id="puzzle-meta"></div>
+      </header>
+
+      <section class="grid">
+        <article class="card treemap-card" aria-labelledby="treemap-title">
+          <header class="card__header">
+            <h2 id="treemap-title">Today's GDP Treemap</h2>
+            <div class="gdp-total" id="gdp-total"></div>
+          </header>
+          <div class="treemap-wrapper">
+            <svg id="treemap" role="img" aria-label="GDP treemap visualization"></svg>
+          </div>
+          <footer class="card__footer">Sectors sized by contribution in USD (billions).</footer>
+        </article>
+
+        <article class="card guess-card" aria-labelledby="guess-title">
+          <header class="card__header">
+            <h2 id="guess-title">Take your guess</h2>
+            <p class="guess-counter" id="guess-counter"></p>
+          </header>
+          <form id="guess-form" class="guess-form" autocomplete="off">
+            <label class="input-label" for="guess-input">Country</label>
+            <div class="input-row">
+              <input
+                id="guess-input"
+                name="guess"
+                class="guess-input"
+                placeholder="Start typing a country name..."
+                list="country-list"
+                required
+              />
+              <button type="submit" class="button">Guess</button>
+            </div>
+          </form>
+          <datalist id="country-list"></datalist>
+          <p class="feedback" id="feedback" role="status" aria-live="polite"></p>
+          <ol class="guess-history" id="guess-history" aria-live="polite"></ol>
+          <footer class="card__footer" id="status-banner"></footer>
+        </article>
+
+        <article class="card info-card" aria-labelledby="info-title">
+          <header class="card__header">
+            <h2 id="info-title">How to play</h2>
+          </header>
+          <div class="info-content">
+            <p>
+              A new puzzle unlocks every day. Study the GDP treemap and guess which
+              country it represents. You have ten attempts.
+            </p>
+            <ul>
+              <li>Each guess must be a valid country from the list.</li>
+              <li>
+                After every incorrect guess you'll learn how far away you are and
+                which direction to travel to reach the target country.
+              </li>
+              <li>
+                Keep track of your streak — your progress is saved for the day on
+                this device.
+              </li>
+            </ul>
+            <p class="info-footnote">
+              Inspired by classic daily puzzles, crafted for explorers of the
+              world economy.
+            </p>
+          </div>
+        </article>
+      </section>
+    </main>
+    <script type="module" src="./main.js"></script>
   </body>
 </html>

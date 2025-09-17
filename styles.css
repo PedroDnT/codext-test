@@ -1,0 +1,320 @@
+:root {
+  --color-primary: hsl(96, 85.19%, 73.53%);
+  --color-black: hsl(0, 0%, 0%);
+  --color-background: hsl(0, 0%, 100%);
+  --color-card: hsl(0, 0%, 96.47%);
+  --font-sans: 'Space Grotesk', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-serif: 'Geist', 'Space Grotesk', serif;
+  --font-mono: 'Geist Mono', 'Space Grotesk', monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--color-background);
+  color: var(--color-black);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+}
+
+.page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: clamp(1.5rem, 3vw, 3rem) clamp(1rem, 4vw, 3rem) 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2rem, 5vw, 3.5rem);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+@media (min-width: 720px) {
+  .header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.brand {
+  font-size: clamp(2.5rem, 6vw, 3.75rem);
+  margin: 0;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+
+.tagline {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  margin: 0.35rem 0 0;
+  max-width: 28rem;
+}
+
+.header__meta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+@media (min-width: 960px) {
+  .grid {
+    grid-template-columns: 2fr 1fr;
+  }
+
+  .grid .info-card {
+    grid-column: span 2;
+  }
+}
+
+.card {
+  background: var(--color-card);
+  border: 1px solid var(--color-black);
+  padding: clamp(1.25rem, 2vw, 1.75rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  border-radius: 0rem;
+  box-shadow: 8px 8px 0 var(--color-black);
+}
+
+.card__header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+@media (min-width: 640px) {
+  .card__header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+}
+
+.card__header h2 {
+  font-size: clamp(1.25rem, 3vw, 1.6rem);
+  margin: 0;
+}
+
+.card__footer {
+  font-size: 0.85rem;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.treemap-wrapper {
+  position: relative;
+  aspect-ratio: 16 / 11;
+  width: 100%;
+}
+
+#treemap {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.gdp-total {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.guess-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.input-label {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.input-row {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.guess-input {
+  flex: 1;
+  font: inherit;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--color-black);
+  background: var(--color-background);
+  border-radius: 0rem;
+}
+
+.guess-input:focus {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.button {
+  background: var(--color-primary);
+  color: var(--color-black);
+  border: 1px solid var(--color-black);
+  padding: 0.85rem 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 0rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: filter 120ms ease;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  filter: grayscale(0.4);
+  opacity: 0.8;
+}
+
+.button:not(:disabled):hover {
+  filter: brightness(1.05);
+}
+
+.feedback {
+  min-height: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+}
+
+.guess-counter {
+  font-family: var(--font-mono);
+  letter-spacing: 0.08em;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+}
+
+.guess-history {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.guess-item {
+  border: 1px solid var(--color-black);
+  background: var(--color-background);
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-radius: 0rem;
+}
+
+.guess-item__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.guess-item__details {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+}
+
+.direction-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--color-primary);
+  padding: 0.35rem 0.65rem;
+  border: 1px solid var(--color-black);
+  border-radius: 0rem;
+  font-family: var(--font-mono);
+}
+
+.distance-chip {
+  font-family: var(--font-mono);
+}
+
+.info-card ul {
+  padding-left: 1.1rem;
+  margin: 0.5rem 0 0;
+}
+
+.info-card li {
+  margin-bottom: 0.45rem;
+}
+
+.info-footnote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  margin-top: 1rem;
+}
+
+.status-success {
+  color: hsl(96, 85%, 30%);
+}
+
+.status-failure {
+  color: hsl(0, 70%, 40%);
+}
+
+#status-banner {
+  min-height: 1.5rem;
+}
+
+.treemap-label {
+  font-family: var(--font-mono);
+  font-size: clamp(0.6rem, 1vw, 0.8rem);
+  fill: var(--color-black);
+  pointer-events: none;
+}
+
+.treemap-rect {
+  stroke: var(--color-black);
+  stroke-width: 1;
+}
+
+@media (max-width: 520px) {
+  .input-row {
+    flex-direction: column;
+  }
+
+  .button {
+    width: 100%;
+  }
+}
+
+.guess-item.correct {
+  background: hsl(96, 85%, 88%);
+  border-color: hsl(96, 85%, 30%);
+}
+
+.guess-item.correct .guess-item__header {
+  color: hsl(96, 85%, 20%);
+}
